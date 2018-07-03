@@ -651,7 +651,7 @@ class Admin(object):
     def get_category_menu_item(self, name):
         return self._menu_categories.get(name)
 
-    def init_app(self, app, index_view=None,
+    def init_app(self, app, template_mode=None, name=None, index_view=None,
                  endpoint=None, url=None):
         """
             Register all views with the Flask application.
@@ -660,7 +660,10 @@ class Admin(object):
                 Flask application instance
         """
         self.app = app
-
+        if name is None:
+            name = 'Admin'
+        self.name = name
+        self.template_mode = template_mode or 'bootstrap2'
         self._init_extension()
 
         # Register Index view
