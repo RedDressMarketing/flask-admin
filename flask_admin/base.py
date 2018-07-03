@@ -660,10 +660,6 @@ class Admin(object):
                 Flask application instance
         """
         self.app = app
-        if name is None:
-            name = 'Admin'
-        self.name = name
-        self.template_mode = template_mode or 'bootstrap2'
         self._init_extension()
 
         # Register Index view
